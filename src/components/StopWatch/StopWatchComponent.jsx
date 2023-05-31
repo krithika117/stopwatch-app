@@ -39,12 +39,12 @@ const StopWatchComponent = () => {
     if (isRunning) setLaps([...laps, Date.now() - startTime]);
   };
 
-  const addLength = (time) => {
-    const addZero = (value) => value.toString().padStart(2, '0');
-    const ms = addZero(Math.floor((time % 1000) / 10));
-    const seconds = addZero(Math.floor((time / 1000) % 60));
-    const minutes = addZero(Math.floor((time / (1000 * 60)) % 60));
-    const hours = addZero(Math.floor(time / (1000 * 60 * 60)));
+  const addZeroes = (time) => {
+    const zeroAdder = (value) => value.toString().padStart(2, '0');
+    const ms = zeroAdder(Math.floor((time % 1000) / 10));
+    const seconds = zeroAdder(Math.floor((time / 1000) % 60));
+    const minutes = zeroAdder(Math.floor((time / (1000 * 60)) % 60));
+    const hours = zeroAdder(Math.floor(time / (1000 * 60 * 60)));
     return `${hours}:${minutes}:${seconds}.${ms}`;
   };
 
@@ -52,7 +52,7 @@ const StopWatchComponent = () => {
     <div className="container text-center my-5">
       <h2>Stopwatch</h2>
       <div className="circle">
-        <div className="timer">{addLength(timePassed)}</div>
+        <div className="timer">{addZeroes(timePassed)}</div>
       </div>
       <div className="btn-group mt-5" role="group">
         <button className="btn btn-primary" onClick={handleStartPause}>
