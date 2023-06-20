@@ -53,7 +53,7 @@ const StopWatchComponent = () => {
 
   return (
     <div className="container text-center my-5">
-      <h2>Stopwatch</h2>
+      <h2>Stopwatch Modified</h2>
       <div className="circle">
         <div className="timer">{addZeroes(timePassed)}</div>
       </div>
